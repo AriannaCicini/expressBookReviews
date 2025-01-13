@@ -84,7 +84,16 @@ public_users.get('/review/:isbn', function (req, res) {
 // Task 10: Get the list of books available in the shop (using async/await)
 async function getBooks() {
     try {
-        const response = await axios.get('http://localhost:3000'); // Assicurati che il server sia in esecuzione su localhost:3000
+        const response = await axios.get('https://ariannacicin-5000.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai'); // Assicurati che il server sia in esecuzione su localhost:3000
+        console.log("Books fetched successfully:", response.data);
+    } catch (error) {
+        console.error("Error fetching books:", error);
+    }
+}
+// Task 10: Get the list of books available in the shop (using async/await)
+async function getBooks() {
+    try {
+        const response = await axios.get('https://ariannacicin-5000.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai'); // Assicurati che il server sia in esecuzione su localhost:3000
         console.log("Books fetched successfully:", response.data);
     } catch (error) {
         console.error("Error fetching books:", error);
@@ -93,7 +102,7 @@ async function getBooks() {
 
 // Task 10: Get the list of books available in the shop (using Promise callbacks)
 function getBooksWithPromises() {
-    axios.get('http://localhost:3000')
+    axios.get('https://ariannacicin-5000.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai')
         .then(response => {
             console.log("Books fetched successfully:", response.data);
         })
@@ -105,7 +114,7 @@ function getBooksWithPromises() {
 // Task 11: Get book details based on ISBN (using async/await)
 async function getBookByISBN(isbn) {
     try {
-        const response = await axios.get(`http://localhost:3000/isbn/${isbn}`);
+        const response = await axios.get(`https://ariannacicin-5000.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai/isbn/${isbn}`);
         console.log(`Book details for ISBN ${isbn}:`, response.data);
     } catch (error) {
         console.error(`Error fetching book details for ISBN ${isbn}:`, error);
@@ -114,7 +123,7 @@ async function getBookByISBN(isbn) {
 
 // Task 11: Get book details based on ISBN (using Promise callbacks)
 function getBookByISBNWithPromises(isbn) {
-    axios.get(`http://localhost:3000/isbn/${isbn}`)
+    axios.get(`https://ariannacicin-5000.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai/isbn/${isbn}`)
         .then(response => {
             console.log(`Book details for ISBN ${isbn}:`, response.data);
         })
@@ -126,7 +135,7 @@ function getBookByISBNWithPromises(isbn) {
 // Task 12: Get book details based on Author (using async/await)
 async function getBooksByAuthor(author) {
     try {
-        const response = await axios.get(`http://localhost:3000/author/${author}`);
+        const response = await axios.get(`https://ariannacicin-5000.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai/author/${author}`);
         console.log(`Books by author ${author}:`, response.data);
     } catch (error) {
         console.error(`Error fetching books by author ${author}:`, error);
@@ -135,7 +144,7 @@ async function getBooksByAuthor(author) {
 
 // Task 12: Get book details based on Author (using Promise callbacks)
 function getBooksByAuthorWithPromises(author) {
-    axios.get(`http://localhost:3000/author/${author}`)
+    axios.get(`https://ariannacicin-5000.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai/author/${author}`)
         .then(response => {
             console.log(`Books by author ${author}:`, response.data);
         })
@@ -147,7 +156,7 @@ function getBooksByAuthorWithPromises(author) {
 // Task 13: Get book details based on Title (using async/await)
 async function getBooksByTitle(title) {
     try {
-        const response = await axios.get(`http://localhost:3000/title/${title}`);
+        const response = await axios.get(`https://ariannacicin-5000.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai/title/${title}`);
         console.log(`Books with title "${title}":`, response.data);
     } catch (error) {
         console.error(`Error fetching books with title "${title}":`, error);
@@ -156,7 +165,7 @@ async function getBooksByTitle(title) {
 
 // Task 13: Get book details based on Title (using Promise callbacks)
 function getBooksByTitleWithPromises(title) {
-    axios.get(`http://localhost:3000/title/${title}`)
+    axios.get(`https://ariannacicin-5000.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai/title/${title}`)
         .then(response => {
             console.log(`Books with title "${title}":`, response.data);
         })
