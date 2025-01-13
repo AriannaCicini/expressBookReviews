@@ -1,3 +1,4 @@
+const express = require('express');
 const public_users = express.Router();
 
 // Register a new user
