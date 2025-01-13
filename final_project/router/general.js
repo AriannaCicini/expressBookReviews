@@ -1,5 +1,6 @@
 const express = require('express');
 const public_users = express.Router();
+let books = require("./booksdb.js");
 
 // Register a new user
 public_users.post("/register", (req, res) => {
