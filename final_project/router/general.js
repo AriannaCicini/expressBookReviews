@@ -1,6 +1,7 @@
 const express = require('express');
 const public_users = express.Router();
 let books = require("./booksdb.js");
+const axios = require('axios');
 
 // Register a new user
 public_users.post("/register", (req, res) => {
@@ -78,5 +79,104 @@ public_users.get('/review/:isbn', function (req, res) {
         reviews: book.reviews || []
     });
 });
+
+
+// Task 10: Get the list of books available in the shop (using async/await)
+async function getBooks() {
+    try {
+        const response = await axios.get('http://localhost:3000'); // Assicurati che il server sia in esecuzione su localhost:3000
+        console.log("Books fetched successfully:", response.data);
+    } catch (error) {
+        console.error("Error fetching books:", error);
+    }
+}
+
+// Task 10: Get the list of books available in the shop (using Promise callbacks)
+function getBooksWithPromises() {
+    axios.get('http://localhost:3000')
+        .then(response => {
+            console.log("Books fetched successfully:", response.data);
+        })
+        .catch(error => {
+            console.error("Error fetching books:", error);
+        });
+}
+
+// Task 11: Get book details based on ISBN (using async/await)
+async function getBookByISBN(isbn) {
+    try {
+        const response = await axios.get(`http://localhost:3000/isbn/${isbn}`);
+        console.log(`Book details for ISBN ${isbn}:`, response.data);
+    } catch (error) {
+        console.error(`Error fetching book details for ISBN ${isbn}:`, error);
+    }
+}
+
+// Task 11: Get book details based on ISBN (using Promise callbacks)
+function getBookByISBNWithPromises(isbn) {
+    axios.get(`http://localhost:3000/isbn/${isbn}`)
+        .then(response => {
+            console.log(`Book details for ISBN ${isbn}:`, response.data);
+        })
+        .catch(error => {
+            console.error(`Error fetching book details for ISBN ${isbn}:`, error);
+        });
+}
+
+// Task 12: Get book details based on Author (using async/await)
+async function getBooksByAuthor(author) {
+    try {
+        const response = await axios.get(`http://localhost:3000/author/${author}`);
+        console.log(`Books by author ${author}:`, response.data);
+    } catch (error) {
+        console.error(`Error fetching books by author ${author}:`, error);
+    }
+}
+
+// Task 12: Get book details based on Author (using Promise callbacks)
+function getBooksByAuthorWithPromises(author) {
+    axios.get(`http://localhost:3000/author/${author}`)
+        .then(response => {
+            console.log(`Books by author ${author}:`, response.data);
+        })
+        .catch(error => {
+            console.error(`Error fetching books by author ${author}:`, error);
+        });
+}
+
+// Task 13: Get book details based on Title (using async/await)
+async function getBooksByTitle(title) {
+    try {
+        const response = await axios.get(`http://localhost:3000/title/${title}`);
+        console.log(`Books with title "${title}":`, response.data);
+    } catch (error) {
+        console.error(`Error fetching books with title "${title}":`, error);
+    }
+}
+
+// Task 13: Get book details based on Title (using Promise callbacks)
+function getBooksByTitleWithPromises(title) {
+    axios.get(`http://localhost:3000/title/${title}`)
+        .then(response => {
+            console.log(`Books with title "${title}":`, response.data);
+        })
+        .catch(error => {
+            console.error(`Error fetching books with title "${title}":`, error);
+        });
+}
+
+// Esegui le funzioni per i vari task
+getBooks(); // Task 10 - Using async/await
+getBooksWithPromises(); // Task 10 - Using Promise callbacks
+
+getBookByISBN("978-0451524935"); // Task 11 - Using async/await
+getBookByISBNWithPromises("978-0451524935"); // Task 11 - Using Promise callbacks
+
+getBooksByAuthor("George Orwell"); // Task 12 - Using async/await
+getBooksByAuthorWithPromises("George Orwell"); // Task 12 - Using Promise callbacks
+
+getBooksByTitle("1984"); // Task 13 - Using async/await
+getBooksByTitleWithPromises("1984"); // Task 13 - Using Promise callbacks
+
 
 module.exports.general = public_users;
